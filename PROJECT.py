@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-capture = cv.VideoCapture('moving-crowd.mp4')
+capture = cv.VideoCapture('videos/moving-crowd.mp4')
 
 if capture.isOpened() == False:
     print("Error loading video file!")
@@ -27,9 +27,9 @@ while capture.isOpened():
         continue
 
     diff = cv.absdiff(background, gray_frame)
-    # cv.imshow("diff", diff)
+    cv.imshow("diff", diff)
     _, thresh = cv.threshold(diff, 70, 255, cv.THRESH_BINARY)
-    cv.imshow("thresh", thresh)
+    # cv.imshow("thresh", thresh)
     contours,_ = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
     # print(contours)
 
