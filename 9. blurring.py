@@ -16,6 +16,7 @@ median = cv.medianBlur(img, 7)
 cv.imshow('medain', median)
 
 # Bilateral Blur
+grayy = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 bilateral = cv.bilateralFilter(img, 20, 35, 35)
 cv.imshow('bilateral', bilateral)
 

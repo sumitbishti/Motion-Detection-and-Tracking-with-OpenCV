@@ -13,7 +13,7 @@ blur = cv.GaussianBlur(img, (7, 7), cv.BORDER_DEFAULT)
 
 # 3. create a edge cascade
 canny = cv.Canny(img, 150, 160)
-# cv.imshow('canny', canny)
+cv.imshow('canny', canny)
 
 # 4. dilate an image
 dilated = cv.dilate(img, (7,7), iterations=5)
@@ -30,7 +30,5 @@ resized = cv.resize(img, (500,300), interpolation=cv.INTER_AREA)
 # 7. Crop
 img = img[100:200, 250:350]
 # cv.imshow('imgg', img)
-
-
 
 cv.waitKey(0)
