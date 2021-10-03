@@ -8,12 +8,12 @@ cv.imshow('gray', gray)
 
 # Simple Thresholding 
 
-threshold, thresh = cv.threshold(gray, 150, 50, cv.THRESH_BINARY)
-# threshold, thresh_inv = cv.threshold(gray, 150, 255, cv.THRESH_BINARY_INV)
+threshold, thresh = cv.threshold(gray, 150, 255, cv.THRESH_BINARY)
+threshold, thresh_inv = cv.threshold(gray, 150, 255, cv.THRESH_BINARY_INV)
 cv.imshow('thresh', thresh)
-# cv.imshow('thresh_inv', thresh_inv)
+cv.imshow('thresh_inv', thresh_inv)
 
-# _, thrsh = cv.threshold(gray, 100, 255, cv.THRESH_TRUNC)
+_, thrsh = cv.threshold(gray, 100, 255, cv.THRESH_TRUNC)
 # cv.imshow('to zero', thrsh)
 
 
