@@ -1,23 +1,21 @@
 import cv2 as cv
 
-img = cv.imread('photos/manoj.jpg')
-# cv.imshow('manoj', img)
+face_cascade = cv.CascadeClassifier('haar_face.xml')
+cap = cv.VideoCapture(0)
 
-gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-# cv.imshow('gray', gray)
+while cap.isOpened():
 
-haar_cascade = cv.CascadeClassifier('haar_face.xml')
+    ret, frame = cap.read()
+    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
-faces_rect = haar_cascade.detectMultiScale(gray, 1.1, 6)
-# faces_rect -> list of coordinates of rectangles around faces
+    faces_rect = face_cascade.detectMultiScale(gray, 1.1, 3)
+    for (x,y,w,h) in faces_rect:
+        cv.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
 
-print(len(faces_rect))
+    cv.imshow('faces', frame)
 
-for (x,y,w,h) in faces_rect:
-    cv.rectangle(img, (x,y), (w, h), (0,255,0), thickness=2)
+    if cv.waitKey(25) == ord('q'):
+        break
 
-cv.imshow('detect', img)
-
-
-
-cv.waitKey(0)
+cap.release()
+cv.destroyAllWindows()
